@@ -16,7 +16,7 @@ st.title('🌍 Global Warming')
 # Content
 c1, c2 = st.columns(2)
 
-#c1.image(Image.open('Images/op-arb.JPG'))
+c1.image(Image.open('Images/gw logo.JPG'))
 
 
 st.subheader('📃 Introduction')
