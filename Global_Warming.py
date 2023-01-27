@@ -10,7 +10,7 @@ from PIL import Image
 theme_plotly = None # None or streamlit
 
 # Title
-st.set_page_config(page_title='🌍 Global Warming', layout='wide')
+st.set_page_config(page_title='Global Warming', page_icon=':bar_chart:', layout='wide')
 st.title('🌍 Global Warming')
 
 # Content
