@@ -19,23 +19,6 @@ c1, c2 = st.columns(2)
 c1.image(Image.open('Images/gw.JPG'))
 
 
-st.subheader('📃 Introduction')
-
-
-st.write(
-    """
-111
-    """
-)
-
-st.subheader('🎯 Purposes of Dashboard')
-st.write(
-    """
-111
-    """
-)
-
-
 #---------------------------------------------------------------------------------------------------------
 # dash_style
 with open('style.css')as f:
@@ -55,12 +38,12 @@ Global_temperature_anomalies = get_data('Global temperature anomalies')
 Annual_Global_temperature_anomalies = get_data('Annual Global temperature anomalies')
 
 df = Global_temperature_anomalies
-fig = px.line(df, x='Date', y='Mean', color='Source', title='MonthlyGlobal temperature anomalies from year 1 to present', log_y=False)
+fig = px.line(df, x='Date', y='Mean', color='Source', title='MonthlyGlobal temperature anomalies from year 1880 to present', log_y=False)
 fig.update_layout(showlegend=True, xaxis_title=None, legend_title='', yaxis_title='Celsius', xaxis={'categoryorder':'total ascending'})
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
 df = Annual_Global_temperature_anomalies
-fig = px.line(df, x='Year', y='Mean', color='Source', title='Yearly Global temperature anomalies from year 1 to present', log_y=False)
+fig = px.line(df, x='Year', y='Mean', color='Source', title='Yearly Global temperature anomalies from year 1880 to present', log_y=False)
 fig.update_layout(showlegend=True, xaxis_title=None, legend_title='', yaxis_title='Celsius', xaxis={'categoryorder':'total ascending'})
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
