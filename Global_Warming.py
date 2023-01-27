@@ -45,7 +45,7 @@ with open('style.css')as f:
 @st.cache(ttl=600)
 def get_data(query1):
      if query1 == 'Global temperature anomalies':
-        return pd.read_json('https://global-warming.org/api/temperature-api')
+        return pd.read_json('https://pkgstore.datahub.io/core/global-temp/monthly_json/data/4c7af7363a20648a68b8f2038a6765d6/monthly_json.json')
      elif query1 == 'Carbon Dioxide':
         return pd.read_json('https://global-warming.org/api/co2-api')
 
@@ -55,7 +55,7 @@ Global_temperature_anomalies = get_data('Global temperature anomalies')
 Carbon_Dioxide = get_data('Carbon Dioxide')
 
 df = Global_temperature_anomalies
-fig = px.bar(df, x='time', y='land', title='Global temperature anomalies from year 1 to present', log_y=False)
+fig = px.bar(df, x='Date', y='Mean', title='Global temperature anomalies from year 1 to present', log_y=False)
 fig.update_layout(showlegend=False, xaxis_title=None, legend_title='', yaxis_title='Celsius', xaxis={'categoryorder':'total ascending'})
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
