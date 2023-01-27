@@ -55,8 +55,8 @@ Global_temperature_anomalies = get_data('Global temperature anomalies')
 Carbon_Dioxide = get_data('Carbon Dioxide')
 
 df = Global_temperature_anomalies
-fig = px.bar(df, x='Date', y='Mean', coloe='Source', title='Global temperature anomalies from year 1 to present', log_y=False)
-fig.update_layout(showlegend=False, xaxis_title=None, legend_title='', yaxis_title='Celsius', xaxis={'categoryorder':'total ascending'})
+fig = px.bar(df, x='Date', y='Mean', color='Source', title='Global temperature anomalies from year 1 to present', log_y=False)
+fig.update_layout(showlegend=True, xaxis_title=None, legend_title='', yaxis_title='Celsius', xaxis={'categoryorder':'total ascending'})
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
 
