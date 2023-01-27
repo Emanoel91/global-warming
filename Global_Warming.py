@@ -46,16 +46,21 @@ with open('style.css')as f:
 def get_data(query1):
      if query1 == 'Global temperature anomalies':
         return pd.read_json('https://pkgstore.datahub.io/core/global-temp/monthly_json/data/4c7af7363a20648a68b8f2038a6765d6/monthly_json.json')
-     elif query1 == 'Carbon Dioxide':
-        return pd.read_json('https://global-warming.org/api/co2-api')
+     elif query1 == 'Annual Global temperature anomalies':
+        return pd.read_json('https://pkgstore.datahub.io/core/global-temp/annual_json/data/529e69dbd597709e36ce11a5d0bb7243/annual_json.json')
 
      return None
 
 Global_temperature_anomalies = get_data('Global temperature anomalies')
-Carbon_Dioxide = get_data('Carbon Dioxide')
+Annual_Global_temperature_anomalies = get_data('Annual Global temperature anomalies')
 
 df = Global_temperature_anomalies
-fig = px.line(df, x='Date', y='Mean', color='Source', title='Global temperature anomalies from year 1 to present', log_y=False)
+fig = px.line(df, x='Date', y='Mean', color='Source', title='MonthlyGlobal temperature anomalies from year 1 to present', log_y=False)
+fig.update_layout(showlegend=True, xaxis_title=None, legend_title='', yaxis_title='Celsius', xaxis={'categoryorder':'total ascending'})
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+
+df = Annual_Global_temperature_anomalies
+fig = px.line(df, x='Year', y='Mean', color='Source', title='Yearly Global temperature anomalies from year 1 to present', log_y=False)
 fig.update_layout(showlegend=True, xaxis_title=None, legend_title='', yaxis_title='Celsius', xaxis={'categoryorder':'total ascending'})
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
